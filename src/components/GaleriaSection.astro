@@ -1,0 +1,55 @@
+---
+const INSTAGRAM = 'https://www.instagram.com/bioesteticayspa_sanjuan';
+
+const fotos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 12].map((n, i) => ({
+  src: `/assets/images/sus_trabajos${n}.jpg`,
+  alt: `Trabajo de Bio Estética y Spa — foto ${i + 1}`,
+}));
+---
+
+<section id="galeria" class="section bg-surface flex flex-col items-center text-center">
+  <div class="w-full max-w-6xl px-6 mx-auto flex flex-col items-center gap-16 md:gap-20">
+
+    <!-- Encabezado centrado -->
+    <div class="fade-in mb-16 max-w-lg">
+      <p class="text-xs font-medium uppercase tracking-[0.22em] text-secondary mb-3">Portfolio</p>
+      <h2 class="heading-xl text-on-surface mb-4">Nuestros trabajos</h2>
+      <p class="body-lg text-muted">
+        Explorá la calidad de nuestros servicios a través de los resultados en nuestras clientas.
+      </p>
+    </div>
+
+    <!-- Grilla de cuadrados -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6 mb-32 w-full">
+      {fotos.map(foto => (
+        <div class="overflow-hidden rounded-2xl aspect-square">
+          <img
+            src={foto.src}
+            alt={foto.alt}
+            width="300"
+            height="300"
+            loading="lazy"
+            class="gallery-img w-full h-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA centrado -->
+    <a
+      href={INSTAGRAM}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-outline inline-flex items-center gap-2 mt-10 md:mt-16"
+      aria-label="Ver más en Instagram"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+      Ver galería completa en Instagram
+    </a>
+
+  </div>
+</section>

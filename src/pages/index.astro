@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ServiciosSection from '../components/ServiciosSection.astro';
+import GaleriaSection from '../components/GaleriaSection.astro';
+import UbicacionesSection from '../components/UbicacionesSection.astro';
+import FooterSection from '../components/FooterSection.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout
+  title="Bio Estética y Spa — Redescubrí tu belleza natural"
+  description="Centro de estética integral en San Juan. Manicura, pedicura, cejas, pestañas, tratamientos faciales, corporales, sauna y más. Reservá tu turno online."
+>
+  <Nav />
+  <main>
+    <HeroSection />
+    <ServiciosSection />
+    <GaleriaSection />
+    <UbicacionesSection />
+  </main>
+  <FooterSection />
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.06, rootMargin: '0px 0px -30px 0px' }
+  );
+
+  document.querySelectorAll<HTMLElement>('.fade-in').forEach(el => {
+    // Elementos ya visibles en el viewport al cargar → activar sin esperar scroll
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 100) {
+      requestAnimationFrame(() => el.classList.add('visible'));
+    } else {
+      observer.observe(el);
+    }
+  });
+</script>

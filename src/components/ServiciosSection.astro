@@ -1,0 +1,219 @@
+---
+import { categorias } from '../data/servicios';
+
+const RESERVAR = 'https://bioesteticayspa.site.agendapro.com/ar';
+
+const destacados = [
+  {
+    titulo: 'Manicura & Pedicura',
+    desc: 'Esculpidas, semipermanente, kapping, belleza de manos y pies. Resultados que duran.',
+    img: '/assets/images/manicura.jpg',
+    tab: 'manicura',
+  },
+  {
+    titulo: 'Faciales & Cejas',
+    desc: 'Limpiezas profundas, dermaplaning, radiofrecuencia, laminado y perfilado de cejas.',
+    img: '/assets/images/faciales.jpg',
+    tab: 'faciales',
+  },
+  {
+    titulo: 'Corporales & Masajes',
+    desc: 'Ultracavitación, masaje reductor, radiofrecuencia corporal, día de spa y más.',
+    img: '/assets/images/masajes.jpg',
+    tab: 'estetica-corporal',
+  },
+];
+---
+
+<!-- ===== SECCIÓN DESTACADOS ===== -->
+<section id="servicios" class="section bg-surface flex flex-col items-center text-center">
+  <div class="w-full max-w-6xl px-6 mx-auto flex flex-col items-center">
+
+    <div class="fade-in max-w-xl mb-14">
+      <p class="text-xs font-medium uppercase tracking-[0.22em] text-secondary mb-3">Lo que ofrecemos</p>
+      <h2 class="heading-xl text-on-surface mb-4">Nuestros servicios</h2>
+      <p class="body-lg text-muted">
+        Experiencias diseñadas para resaltar tu belleza natural con atención personalizada.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-10 max-w-5xl mx-auto justify-items-center">
+      {destacados.map(item => (
+        <article class="fade-in group flex flex-col items-center text-center rounded-2xl overflow-hidden border border-surface-high bg-white transition-shadow duration-300 hover:shadow-lg">
+          <div class="overflow-hidden aspect-[4/3] w-full">
+            <img
+              src={item.img}
+              alt={item.titulo}
+              width="600"
+              height="450"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex flex-col items-center gap-4 p-7 flex-1">
+            <h3 class="heading-md text-on-surface">{item.titulo}</h3>
+            <p class="text-sm text-muted leading-relaxed flex-1">{item.desc}</p>
+            <div class="w-full pt-5 mt-2 border-t border-surface-low flex justify-center">
+          </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CATÁLOGO COMPLETO CON TABS ===== -->
+<section id="catalogo" class="section bg-surface-low flex flex-col items-center">
+  <div class="w-full max-w-6xl px-6">
+
+    <div class="fade-in text-center mb-12">
+      <p class="text-xs font-medium uppercase tracking-[0.22em] text-secondary mb-3">Catálogo completo</p>
+      <h2 class="heading-xl text-on-surface mb-2">Precios</h2>
+      <p class="text-xs text-muted mt-3">* Precios abonando en efectivo</p>
+    </div>
+
+    <!-- Tabs: overflow-x sin justify-center en el wrapper (evita bug de overflow inaccesible) -->
+    <div class="relative mb-10">
+      <div class="overflow-x-auto scrollbar-none">
+        <div
+          id="tab-list"
+          class="flex w-max mx-auto border-b border-surface-high"
+          role="tablist"
+          aria-label="Categorías de servicios"
+        >
+          {categorias.map((cat, i) => (
+            <button
+              type="button"
+              role="tab"
+              id={`tab-${cat.id}`}
+              aria-controls={`panel-${cat.id}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+              data-tab={cat.id}
+              class={`tab-btn text-xs font-medium uppercase tracking-widest text-muted ${i === 0 ? 'active' : ''}`}
+            >
+              {cat.nombre}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Fade izquierdo -->
+      <div class="pointer-events-none absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-surface-low to-transparent"></div>
+
+      <!-- Fade derecho -->
+      <div class="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-surface-low to-transparent"></div>
+    </div>
+
+    <!-- Panels dentro de wrapper con altura estable -->
+    <div id="tab-panels-wrapper" class="w-full">
+      {categorias.map((cat, i) => (
+        <div
+          id={`panel-${cat.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${cat.id}`}
+          class={`tab-panel ${i === 0 ? 'active' : ''}`}
+        >
+          {cat.id === 'spa' ? (
+            /* Día de Spa: lado a lado, card con lista de servicios incluidos */
+            cat.servicios.map(s => (
+              <div class="service-card shrink-0 flex flex-col gap-3" style="min-width: 260px; max-width: 300px;">
+                <h3 class="font-display text-base font-medium text-on-surface leading-snug">{s.nombre}</h3>
+                <ul class="flex flex-col gap-2 flex-1">
+                  {(s.descripcion ?? '').split('·').map((item: string) => item.trim()).filter((item: string) => item).map((item: string) => (
+                    <li class="flex items-start gap-2 text-xs text-muted leading-snug">
+                      <span class="w-1 h-1 rounded-full bg-primary shrink-0 mt-1.5"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p class="text-xs text-muted italic border-t border-surface-low pt-2 mt-auto">Consultá precio</p>
+              </div>
+            ))
+          ) : (
+            /* Resto: cards en fila horizontal con scroll */
+            cat.servicios.map(s => (
+              <div class="service-card shrink-0 flex flex-col gap-3" style="min-width: 240px; max-width: 280px;">
+                <h3 class="text-sm font-medium text-on-surface leading-snug">{s.nombre}</h3>
+                {s.descripcion && (
+                  <p class="text-xs text-muted leading-relaxed flex-1">{s.descripcion}</p>
+                )}
+                <div class="flex items-center justify-between mt-auto pt-3 border-t border-surface-low gap-2 flex-wrap">
+                  {s.duracion && s.duracion !== 'incluida en combos' && (
+                    <span class="text-xs text-muted bg-surface-low rounded-full px-2.5 py-1 shrink-0">
+                      {s.duracion}
+                      {s.sesiones && <span class="ml-1 text-primary-dark font-medium">· {s.sesiones}</span>}
+                    </span>
+                  )}
+                  {s.precio && s.precio !== 'ver combos' && (
+                    <span class="text-base font-medium font-display text-primary-dark shrink-0">{s.precio}</span>
+                  )}
+                  {(!s.precio || s.precio === 'ver combos') && (
+                    <span class="text-xs text-muted italic">ver combos</span>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA centrado -->
+    <div class="fade-in mt-14 flex flex-col sm:flex-row items-center gap-4 justify-center">
+      <p class="text-muted body-lg text-center">¿Lista para reservar?</p>
+      <a href={RESERVAR} target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Sacar turno online
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('[data-tab]');
+  const panels  = document.querySelectorAll<HTMLElement>('[id^="panel-"]');
+  const wrapper = document.getElementById('tab-panels-wrapper');
+
+  function setWrapperHeight(panel: HTMLElement) {
+    if (!wrapper) return;
+    // Forzar display momentáneo para medir la altura real
+    panel.style.display = 'flex';
+    const h = panel.scrollHeight;
+    panel.style.display = '';
+    wrapper.style.minHeight = h + 'px';
+  }
+
+  function activateTab(targetId: string) {
+    tabBtns.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    panels.forEach(p => p.classList.remove('active'));
+
+    const btn = document.querySelector<HTMLButtonElement>(`[data-tab="${targetId}"]`);
+    const panel = document.getElementById(`panel-${targetId}`);
+    btn?.classList.add('active');
+    btn?.setAttribute('aria-selected', 'true');
+    if (panel) {
+      setWrapperHeight(panel);
+      panel.classList.add('active');
+    }
+  }
+
+  // Inicializar altura del panel activo al cargar
+  const firstActive = document.querySelector<HTMLElement>('.tab-panel.active');
+  if (firstActive && wrapper) wrapper.style.minHeight = firstActive.scrollHeight + 'px';
+
+  tabBtns.forEach(btn => btn.addEventListener('click', () => activateTab(btn.dataset.tab!)));
+
+  document.querySelectorAll<HTMLButtonElement>('[data-goto-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activateTab(btn.dataset.gotoTab!);
+      document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>

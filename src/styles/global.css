@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary:        #8FA88E;
+  --color-primary-dark:   #6B8A6A;
+  --color-secondary:      #B4A392;
+  --color-surface:        #F9FBF9;
+  --color-surface-low:    #EAE7E1;
+  --color-surface-high:   #D4CFC8;
+  --color-on-surface:     #2C2A27;
+  --color-muted:          #7A7469;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --nav-blur: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== TIPOGRAFÍA ===== */
+.font-display { font-family: var(--font-display); }
+
+.heading-display {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 0.93;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.heading-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1;
+  font-weight: 300;
+}
+
+.heading-lg {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 3rem);
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.heading-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.body-lg {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
+}
+
+/* ===== NAV ===== */
+#main-nav {
+  background: transparent;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+/* Sobre el hero oscuro: logo y links en blanco */
+#main-nav:not(.scrolled) img {
+  filter: brightness(0) invert(1);
+}
+#main-nav:not(.scrolled) a,
+#main-nav:not(.scrolled) button {
+  color: rgba(255,255,255,0.85);
+}
+#main-nav:not(.scrolled) .btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Al bajar: más transparente + logo bien visible */
+#main-nav.scrolled {
+  background: color-mix(in srgb, var(--color-surface) 60%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: color-mix(in srgb, var(--color-surface-high) 50%, transparent);
+}
+#main-nav.scrolled img {
+  /* Convierte el logo mint a un verde oscuro con buen contraste */
+  filter: brightness(0.25) saturate(2);
+}
+#main-nav.scrolled a,
+#main-nav.scrolled button {
+  color: var(--color-on-surface);
+}
+#main-nav.scrolled .btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Espaciado base de todas las secciones */
+.section {
+  padding-top: 6rem;     /* 96px */
+  padding-bottom: 6rem;
+}
+
+/* Más aire en desktop */
+@media (min-width: 768px) {
+  .section {
+    padding-top: 6rem;   /* 128px */
+    padding-bottom: 6rem;
+  }
+}
+
+/* Separación ENTRE secciones */
+.section + .section {
+  margin-top: 2rem;      /* 48px */
+}
+
+/* ===== TABS DE SERVICIOS ===== */
+.tab-btn {
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 0.875rem 1.5rem;    /* px-6 py-3.5 */
+}
+
+.tab-btn:hover {
+  color: var(--color-primary-dark);
+}
+
+.tab-btn.active {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-primary);
+}
+
+.tab-panel {
+  display: none !important;
+}
+
+/* Cards en fila horizontal con scroll */
+.tab-panel.active {
+  display: flex !important;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  gap: 1.25rem;
+  padding-bottom: 0.5rem;
+  /* Scrollbar invisible (solo scroll, sin barra visible) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tab-panel.active::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE y Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
+/* Día de Spa: lado a lado en fila horizontal */
+#panel-spa.active {
+  display: flex !important;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+  max-width: none;
+  margin: 0;
+}
+
+
+/* Masajes: solo 3 items → centrados sin scroll */
+#panel-masajes.active {
+  justify-content: center;
+  overflow-x: visible;
+  flex-wrap: wrap;
+}
+
+/* ===== GALERÍA ===== */
+.gallery-img {
+  filter: grayscale(0.2);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-img:hover {
+  filter: grayscale(0);
+  transform: scale(1.02);
+}
+
+/* ===== FADE IN ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== BOTÓN ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-primary-dark);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-primary);
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== CARD DE SERVICIO (scroll horizontal) ===== */
+.service-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--color-surface-high);
+  transition: box-shadow 0.25s ease, border-color 0.2s ease;
+  min-height: 130px;
+}
+
+.service-card:hover {
+  box-shadow: 0 4px 20px -4px rgba(143, 168, 142, 0.22);
+  border-color: var(--color-primary);
+}
+
+/* Wrapper de panels: transición suave de altura vía JS */
+#tab-panels-wrapper {
+  transition: min-height 0.3s ease;
+}
+
+/* ===== HAMBURGER ===== */
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--color-on-surface);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#mobile-menu.open .hamburger-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#mobile-menu.open .hamburger-line:nth-child(2) { opacity: 0; }
+#mobile-menu.open .hamburger-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }

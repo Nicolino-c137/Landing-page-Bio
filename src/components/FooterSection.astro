@@ -1,0 +1,82 @@
+---
+const INSTAGRAM = 'https://www.instagram.com/bioesteticayspa_sanjuan';
+const RESERVAR  = 'https://bioesteticayspa.site.agendapro.com/ar';
+
+const navLinks = [
+  { href: '/#servicios',  label: 'Servicios' },
+  { href: '/#catalogo',   label: 'Precios' },
+  { href: '/#galeria',    label: 'Galería' },
+  { href: '/#sucursales', label: 'Sucursales' },
+];
+---
+
+<footer class="bg-on-surface text-surface py-16 px-6 flex flex-col items-center">
+  <div class="w-full max-w-6xl flex flex-col items-center gap-10">
+
+    <!-- Logo centrado -->
+    <a href="/" aria-label="Bio Estética y Spa — inicio">
+      <img
+        src="/logo_bio.svg"
+        alt="Bio Estética y Spa"
+        width="120"
+        height="120"
+        class="h-40 w-auto brightness-0 invert"
+        loading="lazy"
+      />
+    </a>
+
+    <!-- Links centrados -->
+    <nav aria-label="Navegación del footer">
+      <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class="text-xs font-medium uppercase tracking-widest text-surface/60 hover:text-surface transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a
+            href={INSTAGRAM}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-surface/60 hover:text-surface transition-colors duration-200"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+            </svg>
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a
+            href={RESERVAR}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-medium uppercase tracking-widest text-primary hover:text-primary/80 transition-colors duration-200"
+          >
+            Reservar turno
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Copyright -->
+    <div class="border-t border-surface/10 w-full pt-8 text-center">
+      <p class="text-xs text-surface/30">
+        © <span id="footer-year"></span> Bio Estética y Spa · San Juan, Argentina
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  const el = document.getElementById('footer-year');
+  if (el) el.textContent = String(new Date().getFullYear());
+</script>

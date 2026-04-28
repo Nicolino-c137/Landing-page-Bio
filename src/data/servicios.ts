@@ -1,0 +1,198 @@
+export interface Servicio {
+  nombre: string;
+  descripcion?: string;
+  duracion?: string;
+  precio?: string;
+  sesiones?: string;
+}
+
+export interface Categoria {
+  id: string;
+  nombre: string;
+  servicios: Servicio[];
+}
+
+export const categorias: Categoria[] = [
+  {
+    id: 'cejas',
+    nombre: 'Cejas',
+    servicios: [
+      { nombre: 'Depilación con hilo: bozo', duracion: '15 min', precio: '$10.000' },
+      { nombre: 'Depilación con hilo: mentón', duracion: '30 min', precio: '$10.000' },
+      { nombre: 'Depilación con hilo: rostro completo', duracion: '1 hr', precio: '$26.000' },
+      { nombre: 'Laminado de cejas', duracion: '40 min', precio: '$18.000', descripcion: 'Alisa y fija el vello para un efecto ordenado, levantado y con mayor definición.' },
+      { nombre: 'Laminado + perfilado de cejas', duracion: '1 hr', precio: '$29.000', descripcion: 'Combina laminado y perfilado para unas cejas perfectas con forma y volumen.' },
+      { nombre: 'Perfilado de cejas con hilo', duracion: '30 min', precio: '$17.000' },
+      { nombre: 'Perfilado de cejas con cera', duracion: '15 min', precio: '$17.000' },
+      { nombre: 'Perfilado de cejas + bozo con hilo', duracion: '35 min', precio: '$22.000' },
+    ],
+  },
+  {
+    id: 'depilacion',
+    nombre: 'Depilación con cera',
+    servicios: [
+      { nombre: 'Combo 1 — Media pierna + cavado + axila o bozo', duracion: '45 min', precio: '$17.000' },
+      { nombre: 'Combo 2 — Pierna entera + cavado + axila o bozo', duracion: '1 hr', precio: '$18.000' },
+      { nombre: 'Combo 3 — Pierna entera + pelvis completa + tira de cola + axila + bozo', duracion: '1 hr', precio: '$23.000' },
+      { nombre: 'Combo 4 — Rostro completo', duracion: '30 min', precio: '$17.000' },
+      { nombre: 'Combo 5 — Pelvis completa + tira de cola', duracion: '30 min', precio: '$17.000' },
+      { nombre: 'Abdomen', duracion: '30 min', precio: '$8.000' },
+      { nombre: 'Axilas', duracion: '15 min', precio: '$9.000' },      
+      { nombre: 'Bozo', duracion: '15 min', precio: '$8.000' },
+      { nombre: 'Brazos', duracion: '30 min', precio: '$13.000' },
+      { nombre: 'Cavado', duracion: '30 min', precio: '$9.000' },
+      { nombre: 'Cavado profundo', duracion: '30 min', precio: '$16.000' },
+      { nombre: 'Cejas (limpieza)', duracion: '30 min', precio: '$12.000' },
+      { nombre: 'Cintura', duracion: '20 min', precio: '$9.000' },
+      { nombre: 'Cuello', duracion: '30 min', precio: '$8.000' },
+      { nombre: 'Dedos del pie / empeine', duracion: '20 min', precio: '$8.000' },
+      { nombre: 'Entrecejo', duracion: '20 min', precio: '$6.000' },
+      { nombre: 'Espalda', duracion: '40 min', precio: '$13.000' },
+      { nombre: 'Fosas nasales', duracion: '15 min', precio: '$8.000' },
+      { nombre: 'Frente', duracion: '15 min', precio: '$8.000' },
+      { nombre: 'Glúteos', duracion: '30 min', precio: '$13.000' },
+      { nombre: 'Hombre — Abdomen', duracion: '30 min', precio: '$10.000' },
+      { nombre: 'Hombre — Brazos', duracion: '40 min', precio: '$16.000' },
+      { nombre: 'Hombre — Cintura', duracion: '30 min', precio: '$13.000' },
+      { nombre: 'Hombre — Cuello', duracion: '30 min', precio: '$9.000' },
+      { nombre: 'Hombre — Espalda', duracion: '40 min', precio: '$17.000' },
+      { nombre: 'Hombre — Glúteos', duracion: '30 min', precio: '$23.000' },
+      { nombre: 'Hombre — Hombros', duracion: '25 min', precio: '$13.000' },
+      { nombre: 'Hombre — Pecho', duracion: '30 min', precio: '$16.000' },
+      { nombre: 'Hombre — Pelvis', duracion: '30 min', precio: '$23.000' },
+      { nombre: 'Hombre — Pierna entera', duracion: '1 hr', precio: '$26.000' },
+      { nombre: 'Hombre — Tira de cola', duracion: '30 min', precio: '$17.000' },
+      { nombre: 'Media pelvis', duracion: '30 min', precio: '$9.000' },
+      { nombre: 'Media pierna', duracion: '40 min', precio: '$12.000' },
+      { nombre: 'Medio brazo', duracion: '30 min', precio: '$9.000' },
+      { nombre: 'Medio glúteo', duracion: '30 min', precio: '$10.000' },
+      { nombre: 'Mentón', duracion: '20 min', precio: '$8.000' },
+      { nombre: 'Muslo', duracion: '30 min', precio: '$13.000' },
+      { nombre: 'Oreja', duracion: '20 min', precio: '$7.000' },
+      { nombre: 'Patillas', duracion: '20 min', precio: '$7.000' },
+      { nombre: 'Pelvis completa', duracion: '30 min', precio: '$16.000' },
+      { nombre: 'Pierna entera', duracion: '40 min', precio: '$13.000' },
+      { nombre: 'Tira abdomen', duracion: '25 min', precio: '$8.000' },
+      { nombre: 'Tira de cola', duracion: 'incluida en combos', precio: 'ver combos' },
+    ],
+  },
+  {
+    id: 'estetica-corporal',
+    nombre: 'Estética Corporal',
+    servicios: [
+      { nombre: 'Drenaje Corporal', duracion: '1 hr', precio: '$29.000' },
+      { nombre: 'Masaje Reductor + Radiofrecuencia', duracion: '1 hr', precio: '$34.000', descripcion: 'Este servicio combina masaje reductor, y radiofrecuencia para reducir grasa localizada, tonificar y reafirmar la piel. Ideal para moldear el cuerpo, mejorar la circulación y reducir la celulitis. ¡Resultados visibles y duraderos!' },
+      { nombre: 'Masaje Reductor', duracion: '1 hr', precio: '$29.000', descripcion: 'El masaje reductor es un tratamiento corporal que utiliza técnicas de masaje intensas para reducir la grasa localizada y mejorar la apariencia de la piel. Ayuda a tonificar y moldear áreas específicas del cuerpo, como abdomen, muslos y caderas, estimulando la circulación y reduciendo la celulitis. ¡Perfecto para lograr un cuerpo más firme y contorneado!' },
+      { nombre: 'Limpieza de espalda', duracion: '40 min', precio: '$26.000', descripcion: 'La limpieza de espalda es un tratamiento especializado para limpiar y purificar la piel de la espalda. Se realiza mediante exfoliación, extracción de impurezas y aplicación de mascarillas para tratar el exceso de grasa, puntos negros y posibles brotes. Ideal para mantener la piel de la espalda suave, limpia y libre de imperfecciones. ¡Tu espalda libre de impurezas y fresca!' },
+      { nombre: 'Pack 1: Radiofrecuencia Corporal (brazos y abdomen)', duracion: '1 hr', precio: '$103.000', sesiones: '8 sesiones' },
+      { nombre: 'Pack 4: Radiofrecuencia Corporal (glúteos y piernas)', duracion: '1 hr', precio: '$138.000', sesiones: '8 sesiones' },
+      { nombre: 'Pack 8: Radiofrecuencia Corporal + Ultracavitación', duracion: '1 hr', precio: '$161.000', sesiones: '8 sesiones' },
+      { nombre: 'Pack 11: Radiofrecuencia Corporal', duracion: '1 hr', precio: '$115.000', sesiones: '6 sesiones' },
+      { nombre: 'Pack 12: Drenaje Corporal', duracion: '1 hr', precio: '$92.000', sesiones: '4 sesiones' },
+      { nombre: 'Pack 13: Masaje Reductor + Radiofrecuencia', duracion: '1 hr', precio: '$149.000', sesiones: '6 sesiones' },
+      { nombre: 'Pack 14: Ultracavitación + Drenaje corporal', duracion: '1 hr 30 min', precio: '$103.000', sesiones: '4 sesiones' },
+      { nombre: 'Pulido Corporal (brazos y piernas)', duracion: '1 hr', precio: '$23.000', descripcion: 'El pulido corporal es un tratamiento exfoliante que elimina células muertas, dejando la piel suave, hidratada y renovada. Se utiliza un exfoliante especial para mejorar la textura de la piel, eliminar impurezas y promover la circulación. Ideal para mantener la piel saludable y radiante. ¡Tu cuerpo más suave y luminoso!' },
+      { nombre: 'Pulido Piernas', duracion: '45 min', precio: '$14.000', descripcion: 'El pulido de piernas es un tratamiento exfoliante que elimina las células muertas de la piel, dejando las piernas suaves y con un brillo natural. Se realiza con productos especiales que ayudan a renovar la piel, mejorar su textura y promover una apariencia saludable. Ideal para suavizar la piel y preparar las piernas para el verano. ¡Piernas suaves, luminosas y renovadas!' },
+      { nombre: 'Radiofrecuencia Corporal', duracion: '1 hr', precio: '$23.000', descripcion: 'La radiofrecuencia corporal es un tratamiento que utiliza ondas de radio para estimular la producción de colágeno, reafirmando y tonificando la piel. Ayuda a reducir la flacidez, mejorar la textura y combatir la celulitis, logrando un cuerpo más firme y renovado. ¡Ideal para lucir una piel más suave y firme!' },      
+      { nombre: 'Radiofrecuencia Corporal + Ultracavitación', duracion: '1 hr', precio: '$25.000' },
+      { nombre: 'Ultracavitación', duracion: '30 min', precio: '$22.000', descripcion: 'La ultracavitación corporal es un tratamiento que elimina grasa localizada mediante ultrasonido. Se aplica en zonas específicas del cuerpo para reducir medidas y mejorar el contorno. ¡Resultados visibles en pocas sesiones!' },
+    ],
+  },
+    {
+    id: 'estetica-facial',
+    nombre: 'Estética Facial',
+    servicios: [
+      { nombre: 'Dermaplaning + Limpieza facial simple', duracion: '1 hr 30 min', precio: '$50.000' },
+      { nombre: 'Dermaplaning', duracion: '1 hr', precio: '$30.000' },
+      { nombre: 'Drenaje Linfático Facial', duracion: '1 hr', precio: '$18.000', descripcion: 'El drenaje linfático facial es un masaje terapéutico de 30 minutos que estimula el sistema linfático para eliminar toxinas, reducir la hinchazón y mejorar la circulación. Ayuda a desintoxicar la piel, dejándola más firme, fresca y relajada. ¡Un tratamiento rápido y efectivo para un rostro renovado!' },
+      { nombre: 'Hidratación Facial', duracion: '40 min', precio: '$14.000' },
+      { nombre: 'Limpieza Facial', duracion: '1 hr', precio: '$98.000', sesiones: '4 sesiones' },
+      { nombre: 'Limpieza Facial Profunda c/ punta de diamante + Radiofrecuencia facial', duracion: '1 hr', precio: '$31.000', descripcion: 'La limpieza de cutis con extracción es un tratamiento profundo que elimina impurezas, puntos negros y exceso de sebo de la piel. Trabajando con punta de diamante y radiofrecuencia. Se realiza con técnicas suaves de limpieza y extracción, dejando la piel fresca, limpia y renovada. Ideal para mantener el rostro libre de obstrucciones y con una textura suave. ¡Un rostro limpio y revitalizado!' },
+      { nombre: 'Limpieza Facial Simple c/ extracciones', duracion: '1 hr', precio: '$26.000', descripcion: 'La limpieza de cutis con extracción es un tratamiento facial manual que elimina impurezas, puntos negros y exceso de sebo de la piel. Se realiza con técnicas suaves de limpieza y extracción, dejando la piel fresca, limpia y renovada. Ideal para mantener el rostro libre de obstrucciones y con una textura suave. ¡Un rostro limpio y revitalizado!' },
+      { nombre: 'Limpieza Facial + Masaje facial', duracion: '1 hr', precio: '$34.000' },
+      { nombre: 'Radiofrecuencia Facial', duracion: '1 hr', precio: '$90.000', sesiones: '4 sesiones' },
+      { nombre: 'Radiofrecuencia Facial', duracion: '58 min', precio: '$118.000', sesiones: '6 sesiones', descripcion: 'La radiofrecuencia facial es un tratamiento estético no invasivo que utiliza ondas de radio para estimular la producción de colágeno y elastina en la piel. Esto ayuda a tensar, reafirmar y rejuvenecer el rostro, mejorando la textura de la piel y reduciendo las arrugas. Ideal para lograr un efecto lifting sin cirugía. ¡Un rostro más firme y radiante!' },
+      { nombre: 'Radiofrecuencia Facial', duracion: '40 min', precio: '$26.000', descripcion: 'La radiofrecuencia facial es un tratamiento estético no invasivo que utiliza ondas de radio para estimular la producción de colágeno y elastina en la piel. Esto ayuda a tensar, reafirmar y rejuvenecer el rostro, mejorando la textura de la piel y reduciendo las arrugas. Ideal para lograr un efecto lifting sin cirugía. ¡Un rostro más firme y radiante!' },
+    ],
+  },
+  {
+    id: 'manicura',
+    nombre: 'Manicura',
+    servicios: [
+      { nombre: 'Belleza de manos - Esmaltado tradicional', duracion: '45 min', precio: '$17.000', descripcion: 'La Manicuria tradicional es el clásico cuidado de manos: limpieza, limado, retiro de cutículas y aplicación de esmalte, todo rematado con un toque de brillo y un masaje hidratante. ¡Rápido, lindo y listo!' },
+      { nombre: 'Belleza de manos - Express', duracion: '45 min', precio: '$13.000' },
+      { nombre: 'Belleza de manos - Kids', duracion: '45 min', precio: '$13.000' },
+      { nombre: 'Cambio de esmalte en manos', duracion: '30 min', precio: '$11.000', descripcion: 'El cambio de esmalte es un servicio rápido y sencillo para renovar el color de tus uñas. Incluye la remoción del esmalte anterior, limado y aplicación del nuevo color que elijas con esmaltado tradicional. ¡Perfecto para lucir siempre impecable!' },
+      { nombre: 'Deco Nails Art 1', duracion: '15 min', precio: '$3.000' },
+      { nombre: 'Deco Nails Art 2', duracion: '15 min', precio: '$3.500' },
+      { nombre: 'Esculpidas Polygel / Gel', duracion: '2 hr', precio: '$33.000', descripcion: 'Las uñas en gel se aplican con una capa de gel especial que se seca bajo luz UV, creando una uña resistente, flexible y de acabado brillante. Son ideales para quienes buscan uñas naturales, duraderas y con un toque de elegancia.' },
+      { nombre: 'Esculpidas por unidad', duracion: '30 min', precio: '$6.000', descripcion: 'La uña esculpida por unidad es un servicio que permite crear una extensión de uña individualmente, utilizando tips o gel. Ideal para reparar o dar forma a una sola uña dañada o para personalizar el diseño de cada una.' },
+      { nombre: 'Esculpidas Soft Gel', duracion: '2 hr', precio: '$33.000', descripcion: 'Sof Gel es un Tips de alta calidad que se aplica sobre la uña natural para darle largo , forma y un acabado suave y natural. Ideal para quienes quieren una manicura con una textura flexible y un resultado impecable.' },
+      { nombre: 'Kapping por unidad', duracion: '30 min', precio: '$8.000', descripcion: 'El kapping por uña es un tratamiento que se utiliza para reparar uñas rotas o dañadas. Se aplica una pequeña capa de material ( gel ) sobre la zona afectada, para restaurar su forma y estructura, permitiendo que la uña siga creciendo de manera saludable.' },
+      { nombre: 'Kapping', duracion: '1 hr 30 min', precio: '$29.000', descripcion: 'Este servicio es ideal para quienes buscan uñas más duraderas. Aplicamos una fina capa de gel que las recubre, sin alargarlas, respetando su crecimiento natural. incluye esmaltado semipermanente.' },
+      { nombre: 'Retiro Esmalte Semipermanente', duracion: '30 min', precio: '$6.000' },
+      { nombre: 'Retiro Esculpidas', duracion: '30 min', precio: '$12.000', descripcion: 'El retiro es un proceso seguro para eliminar la capa de gel aplicada, dejándote las uñas listas para un nuevo servicio o para lucirlas al natural. ¡Rápido y efectivo!' },
+      { nombre: 'Retiro Kapping', duracion: '30 min', precio: '$9.000', descripcion: 'El retiro es un proceso seguro para eliminar la capa de gel aplicada, dejándote las uñas listas para un nuevo servicio o para lucirlas al natural. ¡Rápido y efectivo!' },
+      { nombre: 'Semipermanente en manos', duracion: '1 hr', precio: '$21.000', descripcion: 'La manicuria semipermanente es el combo perfecto entre estilo y durabilidad. Ideal para quienes quieren lucir uñas perfectas sin preocuparse por retoques constantes.' },
+      { nombre: 'Service Esculpidas', duracion: '1 hr 30 min', precio: '$30.000', descripcion: 'El service es el servicio que se realiza después de 21 dias para retocar y cuidar tus uñas esculpidas. Se limpian, se liman y se rellena la raíz para que tus uñas sigan luciendo perfectas mientras crecen. Ideal para mantenerlas siempre impecables sin perder su forma ni belleza.' },
+      { nombre: 'Service Kapping', duracion: '1 hr 30 min', precio: '$23.000', descripcion: 'El service es el servicio que se realiza después de 21 dias para retocar y cuidar tus uñas esculpidas. Se limpian, se liman y se rellena la raíz para que tus uñas sigan luciendo perfectas mientras crecen. Ideal para mantenerlas siempre impecables sin perder su forma ni belleza.' },
+    ],
+  },
+  {
+    id: 'masajes',
+    nombre: 'Masajes',
+    servicios: [
+      { nombre: 'Masaje Descontracturante 60 minutos', duracion: '1 hr', precio: '$30.000' },
+      { nombre: 'Masaje Relajante 30 minutos', duracion: '30 min', precio: '$22.000' },
+      { nombre: 'Masaje Relajante 60 minutos', duracion: '1 hr', precio: '$30.000' },
+    ],
+  },
+  {
+    id: 'spa',
+    nombre: 'Día de Spa',
+    servicios: [
+      {
+        nombre: 'Día de Spa ABRAZO',
+        descripcion: '· Sauna seco 60 min: 1 persona\n · Masaje descontracturante 60 min\n · Limpieza facial profunda c/ punta de diamante y radiofrecuencia facial',
+      },
+      {
+        nombre: 'Día de Spa ZEN',
+        descripcion: '· Semipermanente en manos\n · Belleza de pies semipermanente',
+      },
+      {
+        nombre: 'Día de Spa ENERGY',
+        descripcion: '· Sauna seco 60 min\n · Masaje descontracturante 60 min\n · Limpieza facial profunda c/ punta de diamante y radiofrecuencia facial\n · Semipermanente en manos\n · Belleza de pies semipermanente',
+      },
+      {
+        nombre: 'Día de Spa RELAX',
+        descripcion: '· Sauna seco 60 min\n · Masaje descontracturante 60 min\n · Reiki 30 min',
+      },
+    ],
+  },
+  {
+    id: 'pedicura',
+    nombre: 'Pedicura',
+    servicios: [
+      { nombre: 'Belleza de pies Semipermanente', duracion: '1 hr', precio: '$23.000', descripcion: 'Disfruta de una belleza de pies completa para tus pies: hidratación, exfoliación, y cuidado de uñas. Te ofrecemos opciones de esmalte semipermanente para un acabado duradero y perfecto. ¡Tus pies se lo merecen!' },
+      { nombre: 'Belleza de pies Tradicional', duracion: '1 hr', precio: '$18.000', descripcion: 'Disfruta de una belleza de pies completa para tus pies: hidratación, exfoliación, y cuidado de uñas. Te ofrecemos opciones de esmalte tradicional para un acabado duradero y perfecto. ¡Tus pies se lo merecen!' },
+      { nombre: 'Cambio de esmalte en pies', duracion: '30 min', precio: '$11.000', descripcion: 'El cambio de esmalte en pies tradicional es un refresh rápido: removemos el esmalte viejo, limamos y aplicamos el color que elijas. ¡Sencillo, prolijo y perfecto para lucir esos pies a la moda!' },
+      { nombre: 'Pedicura', duracion: '1 hr', precio: '$21.000', descripcion: 'Este servicio está diseñado para tratar durezas profundas y uñas encarnadas. Incluye limado de uñas, limpieza de cutículas, tratamiento de asperezas con bisturí y torno e hidratación profunda. Además, finalizamos con esmalte tradicional para un acabado perfecto y elegante. ¡Pies suaves y perfectos!' },
+      { nombre: 'Pedicura Semipermanente', duracion: '1 hr', precio: '$26.000', descripcion: 'Este servicio está diseñado para tratar durezas profundas y uñas encarnadas. Incluye limado de uñas, limpieza de cutículas, tratamiento de asperezas con bisturí y torno e hidratación profunda. Además, finalizamos con esmalte semipermanente para un acabado duradero y elegante. ¡Pies suaves y perfectos!' },
+      { nombre: 'Retiro de esmalte semipermanente en pies', duracion: '30 min', precio: '$6.000' },
+    ],
+  },
+  {
+    id: 'pestanas',
+    nombre: 'Pestañas',
+    servicios: [
+      { nombre: 'Extensión Clásica (pelo x pelo)', duracion: '1 hr 30 min', precio: '$31.000', descripcion: 'La extensión de pestañas clásicas consiste en aplicar una sola pestaña artificial en cada pestaña natural, creando un efecto más largo y definido. Perfecto para quienes desean un look natural pero con más volumen y profundidad en la mirada. ¡Luce unas pestañas impecables todos los días!' },
+      { nombre: 'Lifting de pestañas', duracion: '1 hr', precio: '$21.000', descripcion: 'El lifting de pestañas es un tratamiento que levanta y curva las pestañas naturales, dándoles un efecto de mayor longitud y volumen sin necesidad de extensiones. Es ideal para quienes buscan una mirada más abierta y definida, con un resultado natural y duradero. ¡Pestañas con más intensidad y un look fresco!' },
+      { nombre: 'Lifting de pestañas con tinte', duracion: '1 hr', precio: '$25.000', descripcion: 'El lifting de pestañas es un tratamiento que levanta y curva las pestañas naturales, dándoles un efecto de mayor longitud y volumen sin necesidad de extensiones. Es ideal para quienes buscan una mirada más abierta y definida, con un resultado natural y duradero. ¡Pestañas con más intensidad y un look fresco!' },
+      { nombre: 'Permanente de pestañas', duracion: '1 hr', precio: '$21.000', descripcion: 'Es un tratamiento que levanta y curva las pestañas naturales, dándoles un efecto con mas curvatura . Es ideal para quienes buscan una mirada más abierta y definida, con un resultado natural y duradero. ¡Pestañas con más intensidad y un look fresco!' },
+      { nombre: 'Permanente de pestañas con tinte', duracion: '1 hr', precio: '$25.000', descripcion: 'Es un tratamiento que levanta y curva las pestañas naturales, dándoles un efecto con mas curvatura . Es ideal para quienes buscan una mirada más abierta y definida, con un resultado natural y duradero. ¡Pestañas con más intensidad y un look fresco!' },
+      { nombre: 'Retiro de extensión', duracion: '30 min', precio: '$7.000' },
+      { nombre: 'Service — Extensión Clásica', duracion: '1 hr 30 min', precio: '$26.000', descripcion: 'El mantenimiento de pestañas clásicas se recomienda después de 15 a 20 días, cuando las extensiones comienzan a caer debido al ciclo natural de crecimiento de las pestañas. En este servicio, se retiran las extensiones caídas y se reponen las que lo necesitan para mantener una mirada impecable y llena de volumen. ¡Tus pestañas siempre perfectas!' },
+      { nombre: 'Tinte de pestañas', duracion: '20 min', precio: '$17.000' },
+    ],
+  },
+];
