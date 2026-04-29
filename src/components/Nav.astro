@@ -11,10 +11,10 @@ const INSTAGRAM = 'https://www.instagram.com/bioesteticayspa_sanjuan';
 ---
 
 <header id="main-nav" class="fixed top-0 left-0 right-0 z-50">
-  <nav class="grid grid-cols-3 items-center px-6 py-3 max-w-screen-xl mx-auto w-full">
+  <nav class="grid grid-cols-3 items-center pl-8 pr-8 md:pl-14 md:pr-12 py-3 w-full">
 
     <!-- Logo -->
-    <div class="flex justify-start">
+    <div class="flex justify-start" style="margin-left:1rem;">
       <a href="/" aria-label="Bio Estética y Spa — inicio">
         <img
           src="/logo_bio.svg"
@@ -42,7 +42,7 @@ const INSTAGRAM = 'https://www.instagram.com/bioesteticayspa_sanjuan';
     </ul>
 
     <!-- Acciones desktop -->
-    <div class="hidden md:flex justify-end items-center gap-4">
+    <div class="hidden md:flex justify-end items-center gap-4" style="margin-right:1rem;">
       <a
         href={INSTAGRAM}
         target="_blank"
@@ -67,6 +67,7 @@ const INSTAGRAM = 'https://www.instagram.com/bioesteticayspa_sanjuan';
       aria-label="Abrir menú"
       aria-expanded="false"
       class="md:hidden col-start-3 justify-self-end flex flex-col gap-1.5 p-2 -mr-2"
+      style="margin-right: 1rem;"
     >
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
