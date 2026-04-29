@@ -24,13 +24,13 @@
 
 /* Padding horizontal del contenedor interno — más aire en mobile */
 .section-inner {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 @media (min-width: 640px) {
   .section-inner {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
   }
 }
 
