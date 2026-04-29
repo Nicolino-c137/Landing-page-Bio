@@ -27,7 +27,7 @@ const destacados = [
 
 <!-- ===== SECCIÓN DESTACADOS ===== -->
 <section id="servicios" class="section bg-surface flex flex-col items-center text-center">
-  <div class="w-full max-w-6xl px-6 mx-auto flex flex-col items-center">
+  <div class="section-inner w-full max-w-6xl mx-auto flex flex-col items-center">
 
     <div class="fade-in max-w-xl mb-14">
       <p class="text-xs font-medium uppercase tracking-[0.22em] text-secondary mb-3">Lo que ofrecemos</p>
@@ -65,7 +65,7 @@ const destacados = [
 
 <!-- ===== CATÁLOGO COMPLETO CON TABS ===== -->
 <section id="catalogo" class="section bg-surface-low flex flex-col items-center">
-  <div class="w-full max-w-6xl px-6">
+  <div class="section-inner w-full max-w-6xl">
 
     <div class="fade-in text-center mb-12">
       <p class="text-xs font-medium uppercase tracking-[0.22em] text-secondary mb-3">Catálogo completo</p>
@@ -133,12 +133,16 @@ const destacados = [
           ) : (
             /* Resto: cards en fila horizontal con scroll */
             cat.servicios.map(s => (
-              <div class="service-card shrink-0 flex flex-col gap-3" style="min-width: 240px; max-width: 280px;">
-                <h3 class="text-sm font-medium text-on-surface leading-snug">{s.nombre}</h3>
-                {s.descripcion && (
-                  <p class="text-xs text-muted leading-relaxed flex-1">{s.descripcion}</p>
-                )}
-                <div class="flex items-center justify-between mt-auto pt-3 border-t border-surface-low gap-2 flex-wrap">
+              <div class="service-card shrink-0 flex flex-col" style="min-width: 240px; max-width: 280px;">
+                {/* Zona superior: flex-1 → siempre ocupa todo el espacio → la línea queda a la misma altura */}
+                <div class="flex-1 flex flex-col gap-2 pb-4">
+                  <h3 class="text-sm font-medium text-on-surface leading-snug">{s.nombre}</h3>
+                  {s.descripcion && (
+                    <p class="text-xs text-muted leading-relaxed">{s.descripcion}</p>
+                  )}
+                </div>
+                {/* Footer: siempre pegado al fondo por el flex-1 de arriba */}
+                <div class="flex items-center justify-between pt-3 border-t border-surface-low gap-2 flex-wrap">
                   {s.duracion && s.duracion !== 'incluida en combos' && (
                     <span class="text-xs text-muted bg-surface-low rounded-full px-2.5 py-1 shrink-0">
                       {s.duracion}

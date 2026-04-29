@@ -73,7 +73,7 @@ export const categorias: Categoria[] = [
       { nombre: 'Pelvis completa', duracion: '30 min', precio: '$16.000' },
       { nombre: 'Pierna entera', duracion: '40 min', precio: '$13.000' },
       { nombre: 'Tira abdomen', duracion: '25 min', precio: '$8.000' },
-      { nombre: 'Tira de cola', duracion: 'incluida en combos', precio: 'ver combos' },
+      { nombre: 'Tira de cola', duracion: '30 min', precio: '$9.000' },
     ],
   },
   {
