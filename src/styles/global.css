@@ -108,6 +108,11 @@ body {
   color: white;
 }
 
+/* Hamburger: blanco sobre el hero, oscuro en el resto */
+#main-nav:not(.scrolled) .hamburger-line {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
 /* Menú mobile: siempre oscuro sobre fondo claro */
 #main-nav:not(.scrolled) #mobile-nav a {
   color: var(--color-on-surface);
