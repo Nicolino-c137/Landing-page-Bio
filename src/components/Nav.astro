@@ -1,9 +1,11 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '');
+
 const navLinks = [
-  { href: '/#servicios',  label: 'Servicios' },
-  { href: '/#catalogo',   label: 'Precios' },
-  { href: '/#galeria',    label: 'Galería' },
-  { href: '/#sucursales', label: 'Sucursales' },
+  { href: `${base}/#servicios`,  label: 'Servicios' },
+  { href: `${base}/#catalogo`,   label: 'Precios' },
+  { href: `${base}/#galeria`,    label: 'Galería' },
+  { href: `${base}/#sucursales`, label: 'Sucursales' },
 ];
 
 const RESERVAR = 'https://bioesteticayspa.site.agendapro.com/ar';
@@ -15,9 +17,9 @@ const INSTAGRAM = 'https://www.instagram.com/bioesteticayspa_sanjuan';
 
     <!-- Logo -->
     <div class="flex justify-start" style="margin-left:1rem;">
-      <a href="/" aria-label="Bio Estética y Spa — inicio">
+      <a href={`${base}/`} aria-label="Bio Estética y Spa — inicio">
         <img
-          src="/logo_bio.svg"
+          src={`${base}/logo_bio.svg`}
           alt="Bio Estética y Spa"
           width="120"
           height="120"

@@ -2,24 +2,25 @@
 import { categorias } from '../data/servicios';
 
 const RESERVAR = 'https://bioesteticayspa.site.agendapro.com/ar';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '');
 
 const destacados = [
   {
     titulo: 'Manicura & Pedicura',
     desc: 'Esculpidas, semipermanente, kapping, belleza de manos y pies. Resultados que duran.',
-    img: '/assets/images/manicura.jpg',
+    img: `${base}/assets/images/manicura.jpg`,
     tab: 'manicura',
   },
   {
     titulo: 'Faciales & Cejas',
     desc: 'Limpiezas profundas, dermaplaning, radiofrecuencia, laminado y perfilado de cejas.',
-    img: '/assets/images/faciales.jpg',
+    img: `${base}/assets/images/faciales.jpg`,
     tab: 'faciales',
   },
   {
     titulo: 'Corporales & Masajes',
     desc: 'Ultracavitación, masaje reductor, radiofrecuencia corporal, día de spa y más.',
-    img: '/assets/images/masajes.jpg',
+    img: `${base}/assets/images/masajes.jpg`,
     tab: 'estetica-corporal',
   },
 ];

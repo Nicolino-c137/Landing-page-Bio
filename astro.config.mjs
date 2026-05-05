@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  base: 'bio-estetica-spa-sj',
+  base: '/bio-estetica-spa-sj',
   vite: {
     plugins: [tailwindcss()],
   },

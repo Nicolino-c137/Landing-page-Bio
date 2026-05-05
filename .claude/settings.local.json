@@ -5,7 +5,9 @@
       "WebFetch(domain:franquiciasbioestetica.com)",
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(npm --version)"
+      "Bash(npm --version)",
+      "Bash(Select-String -Path \"c:\\\\Users\\\\Usuario\\\\Documents\\\\LCC\\\\Practica Profesionalizante\\\\Bio Estetica y Spa\\\\dist\\\\index.html\" -Pattern \"assets/images|logo_bio\")",
+      "Bash(Select-Object -First 10)"
     ]
   }
 }

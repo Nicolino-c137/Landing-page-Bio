@@ -1,8 +1,9 @@
 ---
 const INSTAGRAM = 'https://www.instagram.com/bioesteticayspa_sanjuan';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '');
 
 const fotos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 12].map((n, i) => ({
-  src: `/assets/images/sus_trabajos${n}.jpg`,
+  src: `${base}/assets/images/sus_trabajos${n}.jpg`,
   alt: `Trabajo de Bio Estética y Spa — foto ${i + 1}`,
 }));
 ---
